@@ -18,12 +18,17 @@
       </h2>
 
       <plan-picker></plan-picker>
+
     </div>
   </div>
 
   <script type="text/x-template" id="plan-picker-template">
     <div class="plans">
-      <plan v-for="plan in plans" :name="plan"></plan> 
+      <plan 
+        v-for="plan in plans" 
+        :name="plan"
+      >
+      </plan> 
     </div>
   </script>
 
@@ -36,7 +41,6 @@
       </div>
     </div>
   </script>
-
 
   <script src="https://unpkg.com/vue"></script>
   <script src="app.js"></script>
