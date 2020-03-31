@@ -17,7 +17,31 @@
         We travel the world to source the very best single origin coffee for you
       </h2>
 
-      <plan-picker></plan-picker>
+      <div class="plan" >
+        <div class="description">
+          <span class="title">
+            The Single
+          </span>
+        </div>
+      </div>
+
+      <div class="plan" >
+        <div class="description">
+          <span class="title">
+            The Curious
+          </span>
+        </div>
+      </div>
+
+      <div class="plan" >
+        <div class="description">
+          <span class="title">
+            The Addict
+          </span>
+        </div>
+      </div>
+
+
     </div>
   </div>
 
@@ -28,13 +52,7 @@
   </script>
 
   <script type="text/x-template" id="plan-picker-item-template">
-    <div @click="select" class="plan" :class="{'active-plan': isSelected}">
-        <div class="description">
-          <span class="title">
-            {{name}}
-          </span>
-        </div>
-      </div>
+    
   </script>
 
 
