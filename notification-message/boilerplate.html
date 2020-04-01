@@ -11,19 +11,32 @@
     
     <!-- Notification Message Markup -->
     <!-- Types: info, warning, error, success -->
-    <div class="ui error message">
-      <i class="close icon"></i>
-      <div class="header">
-        You are eligible for a reward
-      </div>
-      <p>Go to the <b>special offers</b> page to see now.</p>
-    </div>
+    <notification-message
+      v-for="notification in notifications"
+      :key="notification.type"
+      :notification="notification"
+    >
+
+    </notification-message>
 
   </div>
 
   <!-- Template for Notification Message -->
   <script type="text/x-template" id="notification-message-template">
-  
+    <div 
+      class="ui message"
+      :class="[notification.type, {'hidden': isClosed}]"
+    >
+      <i
+        class="close icon"
+        @click="closeMessage"
+      >
+      </i>
+      <div class="header">
+        {{notification.header}}
+      </div>
+      <p>{{notification.message}}</p>
+    </div>
   </script>
 
   <!-- Import Vue.js -->
@@ -31,8 +44,60 @@
 
   <!-- Your JavaScript Code :) -->
   <script>
+    let NotificationMessage = {
+      template: "#notification-message-template", 
+
+      props: {
+        notification: {
+          type: Object, 
+          required: true
+        }
+      }, 
+
+      data(){
+        return {
+          isClosed: false,
+        }
+      }, 
+
+      methods: {
+        closeMessage(){
+          this.isClosed = true;
+        }
+      }
+    }
+
     new Vue({
-      el: '#app'
+      el: '#app', 
+
+      data: {
+        notifications: [
+          {
+            type: "info",
+            header: "This is an information message", 
+            message: "Were you aware that I love BBQ chips?"
+          },
+          {
+            type: "warning",
+            header: "Hey, just FYI: you might be fucking up", 
+            message: "You may want to rethink what you're about to do"
+          },
+          {
+            type: "error",
+            header: "WTF WAS THAT?", 
+            message: "CHECK YOURSELF"
+          },
+          {
+            type: "success",
+            header: "Yay!", 
+            message: "That worked! :)"
+          },
+        ]
+      }, 
+
+      components: {
+        'notification-message': NotificationMessage
+      }
     })
   </script>
 </body>
